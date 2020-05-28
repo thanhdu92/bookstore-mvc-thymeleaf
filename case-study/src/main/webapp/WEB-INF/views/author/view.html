@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View authors</title>
+</head>
+<body>
+<h1>View authors: <span th:text="${author.authorName}"></span></h1>
+<a href="/authors">Author list</a>
+<table border="1">
+    <tr>
+        <th>Book ID</th>
+        <th>Book Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Author</th>
+        <th>Language</th>
+        <th>Publisher</th>
+        <th>Publication date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="book : ${books}">
+        <tr>
+            <td th:text="${book.bookID}"></td>
+            <td th:text="${book.bookName}"></td>
+            <td th:text="${book.bookPrice}"></td>
+            <td th:text="${book.category.categoryName}"></td>
+            <td th:text="${book.author.authorName}"></td>
+            <td th:text="${book.language.bookLanguage}"></td>
+            <td th:text="${book.publisher.publisherName}"></td>
+            <td th:text="${book.publicationDate}"></td>
+            <td><a th:href="@{/edit-book/__${book.bookID}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-book/__${book.bookID}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

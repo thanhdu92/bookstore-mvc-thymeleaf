@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Languages</title>
+</head>
+<body>
+<a href="/create-language">Create new language</a>
+<h1>Languages</h1>
+<table border="1">
+    <tr>
+        <th>Language</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>List of books</th>
+    </tr>
+    <th:block th:each="language : ${languages}">
+        <tr>
+            <td th:text="${language.bookLanguage}"></td>
+            <td><a th:href="@{/edit-language/__${language.languageID}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-language/__${language.languageID}__ }">Delete</a></td>
+            <td><a th:href="@{/view-language/__${language.languageID}__ }">Go to list</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

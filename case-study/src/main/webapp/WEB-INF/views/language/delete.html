@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete language</title>
+</head>
+<body>
+<h1>Delete language</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/languages">Language list</a>
+</p>
+<form th:action="@{/delete-language}" th:object="${language}" method="post">
+    <input th:type="hidden" name="languageID" th:field="*{languageID}">
+    <table>
+        <tr>
+            <td>Language Name:</td>
+            <td th:text="${language.bookLanguage}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Delete language"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

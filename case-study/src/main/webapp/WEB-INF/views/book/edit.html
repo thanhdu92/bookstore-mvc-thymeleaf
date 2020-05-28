@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit book</title>
+</head>
+<body>
+<h1>Edit book</h1>
+<p>
+    <a href="/books">Book list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-book}" th:object="${book}" method="post">
+    <input th:type="hidden" name="bookID" th:field="*{bookID}">
+    <table>
+        <tr>
+            <td>Book name:</td>
+            <td><input type="text" th:field="*{bookName}"/></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" th:field="*{bookPrice}"/></td>
+        </tr>
+        <tr>
+            <td>Category:</td>
+            <td>
+                <select name="category">
+                    <option th:each="p : ${categories}"
+                            th:value="${p.categoryID}"
+                            th:text="${p.categoryName}"
+                            th:selected="(${p.categoryID} == *{category.categoryID})"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Author:</td>
+            <td>
+                <select name="author">
+                    <option th:each="p : ${authors}"
+                            th:value="${p.authorID}"
+                            th:text="${p.authorName}"
+                            th:selected="(${p.authorID} == *{author.authorID})"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Language:</td>
+            <td>
+                <select name="language">
+                    <option th:each="p : ${languages}"
+                            th:value="${p.languageID}"
+                            th:text="${p.bookLanguage}"
+                            th:selected="(${p.languageID} == *{language.languageID})"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Publisher:</td>
+            <td>
+                <select name="publisher">
+                    <option th:each="p : ${publishers}"
+                            th:value="${p.publisherID}"
+                            th:text="${p.publisherName}"
+                            th:selected="(${p.publisherID} == *{publisher.publisherID})"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Publication date:</td>
+            <td><input type="text" th:field="*{publicationDate}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update book"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

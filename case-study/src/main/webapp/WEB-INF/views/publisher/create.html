@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Create publisher</title>
+</head>
+<body>
+<h1>Create publisher</h1>
+<p>
+    <a href="/publishers">Publisher list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-publisher}" th:object="${publisher}" method="post">
+    <table>
+        <tr>
+            <td>Publisher Name:</td>
+            <td><input type="text" th:field="*{publisherName}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create publisher"></td>
+        </tr>
+    </table>
+</form>
+
+<div sec:authorize="isAuthenticated()">
+    <a th:href="@{/admin}">Home</a> | <a th:href="@{/login}">Logout</a>
+</div>
+
+</body>
+</html>

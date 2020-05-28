@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Create book</title>
+</head>
+<body>
+<h1>Create book</h1>
+<p>
+    <a href="/books">Book list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-book}" th:object="${book}" method="post">
+    <table>
+        <tr>
+            <td>Book name:</td>
+            <td><input type="text" th:field="*{bookName}"/></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" th:field="*{bookPrice}"/></td>
+        </tr>
+        <tr>
+            <td>Category:</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="p : ${categories}" th:value="${p.categoryID}" th:text="${p.categoryName}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Author:</td>
+            <td>
+                <select th:field="*{author}">
+                    <option th:each="p : ${authors}" th:value="${p.authorID}" th:text="${p.authorName}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Language:</td>
+            <td>
+                <select th:field="*{language}">
+                    <option th:each="p : ${languages}" th:value="${p.languageID}" th:text="${p.bookLanguage}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Publisher:</td>
+            <td>
+                <select th:field="*{publisher}">
+                    <option th:each="p : ${publishers}" th:value="${p.publisherID}" th:text="${p.publisherName}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Publication date:</td>
+            <td><input type="text" th:field="*{publicationDate}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create book"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create language</title>
+</head>
+<body>
+<h1>Create language</h1>
+<p>
+    <a href="/languages">Language list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-language}" th:object="${language}" method="post">
+    <table>
+        <tr>
+            <td>Language Name:</td>
+            <td><input type="text" th:field="*{bookLanguage}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Create language"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

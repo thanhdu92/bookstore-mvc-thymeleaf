@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete publisher</title>
+</head>
+<body>
+<h1>Delete publisher</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/publishers">Publisher list</a>
+</p>
+<form th:action="@{/delete-publisher}" th:object="${publisher}" method="post">
+    <input th:type="hidden" name="publisherID" th:field="*{publisherID}">
+    <table>
+        <tr>
+            <td>Publisher Name:</td>
+            <td th:text="${publisher.publisherName}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Delete publisher"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

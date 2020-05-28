@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+</head>
+<body>
+<h1> Dear <span th:text="${user}"></span> Welcome to Admin Page</h1>
+
+<a href="/books">Book management</a></body> <br>
+<a href="/categories">Category management</a> <br>
+<a href="/authors">Author management</a> <br>
+<a href="/languages">Language management</a> <br>
+<a href="/publishers">Publisher management</a> <br>
+
+<div sec:authorize="isAuthenticated()">
+    <a th:href="@{/login}">Logout</a>
+</div>
+</body>
+</html>

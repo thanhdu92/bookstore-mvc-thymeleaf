@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit language</title>
+</head>
+<body>
+<h1>Edit language</h1>
+<p>
+    <a href="/languages">Language list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-language}" th:object="${language}" method="post">
+    <input th:type="hidden" name="languageID" th:field="*{languageID}">
+    <table>
+        <tr>
+            <td>Language Name:</td>
+            <td><input type="text" th:field="*{bookLanguage}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update language"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
